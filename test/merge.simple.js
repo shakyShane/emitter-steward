@@ -1,29 +1,31 @@
-"use strict";
-
 var Steward = require("../index");
-
 var events  = require("events");
-var assert  = require("chai").assert;
+var test    = require("tape");
 
-describe("Creating instance", function(){
+test("Creating instance", function (t) {
+    var steward = new Steward(new events.EventEmitter());
+    var actual  = steward.valid(1);
+    steward.destroy();
+    t.deepEqual(actual, true);
+    t.end();
+});
 
-    it("should return true", function(){
-        var steward = new Steward(new events.EventEmitter());
-        var actual  = steward.valid(1);
-        assert.isTrue(actual);
-    });
-    it("should return true if same emmitter called", function(){
-        var steward = new Steward(new events.EventEmitter());
-        var actual  = steward.valid(1);
-        actual      = steward.valid(1);
-        assert.isTrue(actual);
-    });
-    it("should return FALSE if different emitter", function(){
-        var steward = new Steward(new events.EventEmitter());
-        var actual  = steward.valid(1);
-        actual      = steward.valid(2);
-        assert.isFalse(actual);
-    });
+test("Creating instance", function (t) {
+    var steward = new Steward(new events.EventEmitter());
+    var actual  = steward.valid(1);
+    actual      = steward.valid(1);
+    steward.destroy();
+    t.deepEqual(actual, true);
+    t.end();
+});
+
+test("Creating instance", function (t) {
+    var steward = new Steward(new events.EventEmitter());
+    var actual  = steward.valid(1);
+    actual      = steward.valid(2);
+    steward.destroy();
+    t.deepEqual(actual, false);
+    t.end();
 });
 
 

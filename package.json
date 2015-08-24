@@ -1,10 +1,10 @@
 {
   "name": "emitter-steward",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Cycle & reset allowed emitters",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive test"
+    "test": "tape test/*"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,6 @@
   },
   "homepage": "https://github.com/shakyShane/emitter-steward",
   "devDependencies": {
-    "chai": "^1.9.1",
-    "sinon": "^1.9.1",
-    "mocha": "^1.18.2",
-    "gulp-jshint": "^1.5.5",
-    "gulp": "^3.6.2"
+    "tape": "^4.2.0"
   }
 }
